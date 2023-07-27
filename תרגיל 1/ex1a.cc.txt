@@ -1,0 +1,30 @@
+/* Ex1.a : Calculating the difference between numbers*/
+
+// --------- including section ------
+#include <iostream>
+
+// --------- using section ------
+using std :: cout;
+using std :: cin; 
+using std :: endl;
+
+// ------- main section ----
+int main()
+{
+
+    // ------- variables that are the three inputs
+    int num1,num2,num3;
+    
+    // ---------- entering the variables
+    cin >> num1 >> num2 >> num3 ; 
+    
+   // ----------- presenting three numbers in three cases 
+    cout << num1-num1 << " " << num1-num2 << " " << num1-num3 << endl;
+    
+    cout << num2-num1 << " " << num2-num2 << " " << num2-num3 << endl;
+    
+    cout << num3-num1 << " " << num3-num2  << " " << num3-num3 << endl; 
+    
+    cout << endl;
+    return 0;
+}

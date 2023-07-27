@@ -1,0 +1,72 @@
+/*  Ex5a: 
+*   =====================================
+*   Written by: amr shwieky, id = 212443485, login = amrsh
+*   
+*   The program contains a six-digit matrix, 
+*    and the user is asked to enter values into each cell in the matrix.
+*    The program compares the values and checks whether the number is
+*    divided by the numbers before it without a remainder,
+*    and the next number is divided by it without a remainder.
+*/
+
+//--------include section---------
+#include <iostream>
+#include <cstdlib>
+
+//--------using section---------
+using std :: cout;
+using std :: cin;
+using std :: endl;
+
+//--------constant section--------
+const int NUM_OF_STUDS=6;
+
+//--------function section--------
+void read_data(int arr[]);
+bool checks_numper(int arr2[] , int i , bool & result);
+int checks_if_true(int ans[]);
+
+//------main section---------
+int main()
+{
+    int ids [NUM_OF_STUDS];
+        
+    read_data(ids);
+    cout<<checks_if_true(ids);
+    
+    return EXIT_SUCCESS;
+}
+// function to read numper to array
+void read_data(int arr[]){
+    
+     for(int stude=0;stude<NUM_OF_STUDS;stude++)
+    cin>>arr[stude];
+}
+
+// A function that calls another function and completes its work to return a value
+int checks_if_true(int ans[]){
+    int count=0;
+    for(int i=1; i<NUM_OF_STUDS - 1; ++i){
+        bool result=false;
+        checks_numper(ans , i , result);
+        
+        if(result == true)
+            count++;
+    }
+    return count;
+}
+
+// function this check numper in arrya and givt value true or false
+bool checks_numper(int arr2[] , int i , bool & result){
+        int temp =i;
+        if(arr2[temp]>=1 && arr2[temp - 1]>=1){
+            if(arr2[temp + 1]%arr2[temp]==0 && arr2[temp]%arr2[temp - 1]==0)
+                result=true;
+        }
+        
+    return result;
+}
+
+
+
+

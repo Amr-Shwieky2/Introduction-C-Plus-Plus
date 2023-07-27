@@ -1,0 +1,51 @@
+void check_even(int mtx[ROWS][COLS], int arr[], int & sum, int x, int & i,
+                int &j, bool & first, bool & case_2, bool & case_3, bool & case_4,
+                bool & case_5){
+                
+    if(x==1){     
+        for(j; j<3 && first; j++){
+           if(mtx[i][j]%2 == 0){
+                sum += mtx[i][j];
+                first=false;
+            }
+        }
+    }
+    if(x==2){
+        if(mtx[i][j + 1]%2 == 0 && mtx[i][j + 2]%2 == 0){
+            case_2=false;
+            sum += mtx[i][j + 1];
+            sum += mtx[i][j + 2];
+        }
+    }
+    if(x==3){
+        if(mtx[i][j + 3]%2 == 0 && mtx[i][j + 4]%2 == 0 && mtx[i][j + 5]%2 == 0){
+            case_3=false;
+            sum=mtx[i][j + 3];
+            sum=mtx[i][j + 4];
+            sum=mtx[i][j + 5];
+        }    
+    }
+    if(x==4){
+        if(mtx[i][j + 6]%2 == 0 && mtx[i][j + 7]%2 == 0 &&
+            mtx[i][j + 8]%2 == 0 && mtx[i][j + 9]%2 == 0){
+            case_4=false;
+            sum=mtx[i][j + 6];
+            sum=mtx[i][j + 7];
+            sum=mtx[i][j + 8];
+            sum=mtx[i][j + 9];
+        }    
+    }
+    if(x==5){
+        if(mtx[i][j+ 10]%2 == 0 && mtx[i][j + 11]%2 == 0 && 
+            mtx[i][j + 12]%2 == 0 && mtx[i][j + 13]%2 == 0 
+            && mtx[i][j + 14]%2 == 0){
+            case_5=false;    
+            sum=mtx[i][j+ 10];
+            sum=mtx[i][j + 11];
+            sum=mtx[i][j + 12];
+            sum=mtx[i][j + 13];
+            sum=mtx[i][j + 14];
+        }
+    }
+    
+}    

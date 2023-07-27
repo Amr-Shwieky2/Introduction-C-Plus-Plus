@@ -1,0 +1,57 @@
+void check_bool(int mtx[ROWS][COLS], int arr[], int & sum, int x, int & i,
+                int &j, bool & first, bool & case_2, bool & case_3, bool & case_4,
+                bool & case_5){
+    
+    if(first==true && x==1){
+            i++;
+            if(arr[x]==EVEN_PT){
+                check_even(mtx, arr, sum,  x, i, j,
+                            first, case_2, case_3,
+                            case_4, case_5);
+            }
+            else if(arr[x]==POSITIVE_PT){
+                check_positive(mtx, arr, sum,  x, i,
+                                j, first, case_2, case_3,
+                                case_4, case_5);
+            }
+            else if(arr[x]==DIVIDE_BY_3_MPT){
+                check_divide_by_3(mtx, arr, sum,  x, i,
+                                  j, first, case_2, case_3,
+                                  case_4, case_5);
+            }
+    }
+    else if(case_2==true && x==2){
+            i++;
+            x=0;
+            sum=-1;
+            j=0;
+            first=true;
+    }
+    else if(case_3==true && x==3){
+            i++;
+            x=0;
+            sum=-1;
+            j=0;
+            first=true;
+            case_2=true;
+    }
+    else if(case_4==true && x==4){
+            i++;
+            x=0;
+            sum=-1;
+            j=0;
+            first=true;
+            case_2=true;
+            case_3=true;
+    }
+    else if(case_5==true && x==5){
+            i++;
+            x=0;
+            sum=-1;
+            j=0;
+            first=true;
+            case_2=true;
+            case_3=true;
+            case_4=true;
+    }
+}

@@ -1,0 +1,42 @@
+#include <iostream>
+
+using  std :: cout;
+using std :: cin;
+using std :: endl;
+
+int main()
+{
+    int age , gen;
+    
+    bool adl = false ;
+    bool old = false ;
+    
+    
+    cin >> age >> gen;
+    
+     if (age >120 || age <0 ){
+    cout << "bad input";
+    return 0; }
+   
+    
+    else if ( gen != 1 && gen !=0){
+    cout << "bad input";
+    return 0;}
+    
+    if ( age >= 18 )  
+    adl = true;
+    
+    if ( adl == true)
+    cout <<"Adult";
+    
+    if (adl == false )
+    cout << "Minor";
+    
+    if ((gen ==1 && age > 81) || (gen == 0 && age > 84) )
+    old = true;
+    
+    if ( old == true )
+    cout <<" older than life expectancy";
+    
+    return 0;
+}

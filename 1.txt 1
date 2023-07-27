@@ -1,0 +1,23 @@
+#include <iostream>
+
+using std :: cout;
+using std :: cin;
+using std :: endl;
+
+int main()
+{
+    int num1, num2; 
+    cin >> num1 >> num2;
+    if (num1>=0)
+  {  if (num2 >= 0)
+    cout <<" both are positive" <<endl;
+    else 
+    cout <<"only num1 is positive" <<endl;
+  }
+    
+else 
+     cout << "num1 is negative"<<endl;
+    
+
+    return 0;
+}

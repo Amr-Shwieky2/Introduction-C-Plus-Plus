@@ -1,0 +1,128 @@
+/* Ex5b: 
+*   =====================================
+*   Written by: amr shwieky, id = 212443485, login = amrsh
+*
+*    The program works on a request from the user six numbers
+*    and checks them to see if they constitute a rise and fall
+*    in the formation of the six numbers and exits from any 
+*    starting cell, and the number of cells to which the condition applies
+*
+*   run time : in function read_cell its have run time = It rotates six times at worst
+               in function check_array its have run time = It rotates six times at worst
+               All program works in 36 times.
+*/              
+
+//--------include section---------
+#include <iostream>
+#include <cstdlib>
+
+//--------using section---------
+using std :: cout;
+using std :: cin;
+using std :: endl;
+
+//--------constant section--------
+const int N=6;
+
+//--------function section--------
+void read_data(int arr[]);
+void read_cell(int arr[]);
+int check_array(int arr[], int cell);
+
+//------main section---------
+int main()
+{
+    int arr[N];
+    read_data(arr);
+    read_cell(arr);
+    
+    return EXIT_SUCCESS;
+}
+
+// function to read numper to array
+void read_data(int arr[]){
+    
+     for(int stude=0;stude<N;stude++)
+        cin>>arr[stude];
+}
+
+// A function that calls another function and completes its work to return a value
+void read_cell(int arr[]){
+    int cell, count1=0, count2=0;
+    for(int i= 0; i<N - 1; i++){
+        if(i==0){
+          if(arr[i]<arr[i + 1]){
+            count1++;
+          if(arr[i + 1]>arr[i + 2])
+            count1++;
+          else 
+            continue;
+          if(count1 == 2){
+            cell=i;
+            cout<<cell<<" "<<check_array(arr, cell);
+            break;
+          }
+          }
+          if(arr[i]>arr[i + 1]){
+            count1++;
+          if(arr[i + 1]<arr[i + 2])
+            count1++;
+          else 
+            continue;
+          if(count1 == 2){
+            cell=i;
+            cout<<cell<<" "<<check_array(arr, cell);
+            break;
+          }
+          }
+        }
+        if(i>=1){
+            if(arr[i]<arr[i+1]){
+            if(arr[i]<arr[i+1])    
+            count2++;
+            else
+            continue;
+            if(arr[i+1]>arr[i+2])
+            count2++;
+            if(count2 == 2){
+            cell=i;
+            cout<<cell<<" "<<check_array(arr, cell);
+            break;
+            }
+            }
+        }
+            if(count1 == count2){
+                if(i>3){
+                cell=i;
+                cout<<cell<<" "<<check_array(arr, cell);
+                break;
+                }
+                else{
+                cell=0;
+                cout<<cell<<" "<<check_array(arr, cell);
+                break;   
+                }
+            }
+    }
+}
+
+//A function that counts the number of cells in an array
+int check_array(int arr[], int cell){
+    
+    int count=1;
+    for(cell; cell<N - 1; cell++){
+        if(cell%2 == 0){
+        if(arr[cell]<arr[cell + 1])
+            count++;
+            else
+           return count;
+        }
+        else if(cell%2 == 1){
+            if(arr[cell]>arr[cell + 1])
+            count++;
+            else
+            return count;
+        }
+    }
+    return count;
+}

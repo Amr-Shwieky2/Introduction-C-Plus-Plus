@@ -1,0 +1,71 @@
+/* File: Ex3b.cc 
+*    
+* ========================================
+* Writen by: Amr Shwieky, id = 212443485, login = amrsh
+*
+*  The program works to find two numbers from one to thousand,
+*  whose square sum is equal to a number and their cube sum
+*  is equal to a number.  
+*/ 
+
+
+// --------- including section ------
+#include <iostream>
+
+
+// --------- using section ------
+using std :: cout;
+using std :: cin;
+using std :: endl;
+
+// ------- main section ----
+int main() {
+    
+// ------- for loop section ----    
+	for (int a = 1; a <= 1000; a++){
+		for (int b = a; b<= 1000; b++){
+			long long ans_c = 0, ans_d = 0;
+			for (long long c = 1; (c <= 1415) && (c*c*c <= a*a + b*b); c++){
+				if (a*a + b*b == c*c*c){
+					ans_c = c;
+					break;
+				}	
+			}
+			if(!ans_c)continue;
+			for (long long d = 1; (d <=44722) && (d*d <= a*a*a + b*b*b); d++){
+				if (a*a*a + b*b*b == d*d){
+					ans_d = d;
+					break;
+				}
+			}
+			if (ans_c && ans_d){
+				cout << a << " " << b << endl;
+			}
+			ans_c = 0;
+			ans_d = 0;
+		}
+	}
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

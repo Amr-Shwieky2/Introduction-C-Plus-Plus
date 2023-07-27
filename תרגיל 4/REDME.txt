@@ -1,0 +1,50 @@
+File: ex4a.cc 
+
+ ========================================
+ Writen by: Amr Shwieky, id = 212443485, login = amrsh
+
+The program contains a six-digit matrix, and the user is asked to enter values into each cell in the matrix.
+The program compares the values and checks whether the number is  divided by the numbers before it 
+without a remainder, and the next number is divided by it without a remainder.
+
+Compile: g++ -Wall ex4a.cc –o ex4a
+Run: ex4a
+Input: 	enter values into six-digit matrix, each cell in the matrix. 
+
+Output: number of digits  checked whether the number is  divided by the numbers before it 
+without a remainder, and the next number is divided by it without a remainder.
+
+File: ex4b.cc 
+
+ ========================================
+ Writen by: Amr Shwieky, id = 212443485, login = amrsh
+
+The program works in the range of numbers from one to twenty-four, and checks the numbers as follows, if it 
+is divided by two without a remainder,then it is divided, but if it is not divided,  the number is multiplied by
+ three and one is added to it The process stops when a number is repeated or the number of the number
+ reaches more than a thousand.
+
+
+Compile: g++ -Wall ex4b.cc –o ex4b
+Run: ex4b
+Input:   the range of numbers from one to twenty-four
+Output: numbers from one to twenty-four And all the complications that come from each number
+
+
+File: ex4c.cc 
+
+========================================
+ Writen by: Amr Shwieky, id = 212443485, login = amrsh
+
+ The program receiving 8 numbers to an array of 8 numbers, and start to locate a loop which means,
+ checking numbers from left to right in the array, if the  first number points on a value, that if u point 
+with it on another cell, and its value points on another cell etc, and at least the value of what we pointed
+ at is worth to the number cell of the first cell we pointed at, itcalls a loop, we print the number cells which
+ participated in the loop by order(with the help of another array).
+
+Compile: g++ -Wall ex4c.cc –o ex4c
+Run: ex4c
+Input: receiving 8 int numbers for the array.
+Output: the numbers of the cells which participated in the loop by the order.
+
+

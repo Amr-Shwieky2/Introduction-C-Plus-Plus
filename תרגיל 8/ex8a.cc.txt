@@ -1,0 +1,368 @@
+/*Ex8:
+*   =====================================
+*   Written by: amr shwieky, id = 212443485, login = amrsh
+*
+*    The program works on entering a number to perform a
+*    specific operation assigned to a number, the operations
+*    will be on an array of ten cells.
+------------------------------------------------------------------
+------------------------------------------------------------------
+*   input: A number to start the operations and ten numbers
+*   inside the array, followed by the sequence of operations
+*   numbers until the number thirteen, to end the program.
+*   output: Depending on the process number that enters.
+*/
+//============include section=========================
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <cctype>
+#include <cstring>
+#include <stdlib.h>
+//=================using section======================
+using std::cout;
+using std::endl;
+using std::cin;
+//=================const section====================== 
+const unsigned MAX = 10;
+//================enum section========================
+enum list {
+    FILL_ARRAY = 1, SUM_ARRAY = 2, ARRANGEMENT_ARRAY = 3,
+    BINNER_SEARCH = 4, IS_SEQEUNCE = 5, PRINT_FROM_TOP = 6,
+    PRINT_FROM_END = 7, SUM_OF_2BEFORE =8, POLINDROM_CHECK = 9,
+    CHECK_SITUATION = 10, BIGGEST_LIMITS = 11, PRINT_PRIMARY = 12,
+    THIRTEEN = 13
+};
+//=================function section======================
+void start(int arry[MAX], bool salary);
+void read_data(int arry[], int num);
+int sum(int arry[], int num);
+void arg(int arry[], int num, int conter, bool& salary);
+void arrangement(int arry[], int num, int round_two);
+int research(int arry[], int num, bool salary, int input);
+int similar(int arry[], int num);
+void print(int arry[], int num);
+void print_end(int arry[], int num);
+int fip(int arry[], int num);
+void palindrom(const int my_array[],
+    int index, int start, bool& is_palindrom);
+int series(int arry[], int num, int& c1, int& c2);
+int maximum(int arry[], int num, int sta, int end, int& big);
+void bag(int arry[], int num, int sta, int end, int& big);
+void primary(const int my_array[], int);
+bool is_primary(int n_check, int);
+// =================main section ==============================-
+int main()
+{
+    int arry[MAX];
+    bool salary = false;
+    start(arry, salary);
+    return EXIT_SUCCESS;
+}
+//================function start============================
+// From this function, the program starts, from which all functions are called
+void start(int arry[MAX],bool salary)
+{
+    int num = 0, conter = 0,  choise = 0;
+    
+    cin >> choise;
+    if (choise == 13)
+        return;
+    switch (choise)
+    {
+    case FILL_ARRAY: //fill array (1)
+    {
+        read_data(arry, num);
+        break;
+    }
+    case SUM_ARRAY:   // (2)
+    {
+
+        sum(arry, num);
+        break;
+
+    }
+    case ARRANGEMENT_ARRAY: //(3)
+    {
+        arg(arry, num, conter, salary);
+        break;
+    }
+    case BINNER_SEARCH:  // (4)
+    {
+		if(salary == false){
+        cout << "Error\n";
+        break;
+		} 
+        int input;
+        cin >> input; 
+        cout << research(arry, num, salary, input) << endl;
+        break;
+    }
+    case IS_SEQEUNCE:  // (5)
+    {
+
+        cout << similar(arry, num) << endl;
+        break;
+    }
+    case PRINT_FROM_TOP: //print arry from index 0-10  (6)
+    {
+        print(arry, num);
+        cout << endl;
+        break;
+    }
+    case PRINT_FROM_END: //print arry from index 10-0  (7)
+    {
+        print_end(arry, MAX - 1);
+        cout << endl;
+        break;
+    }
+    case SUM_OF_2BEFORE: //8
+    {
+        cout << fip(arry, 2) << endl;
+        break;
+    }
+    case POLINDROM_CHECK: //9
+    {
+        // for know if palindrom
+        bool is_palindrom = true;
+        palindrom(arry, 0, MAX - 1, is_palindrom);
+        (is_palindrom) ? cout << 1 << endl : cout << 0 << endl;
+        break;
+    }
+    case CHECK_SITUATION: //10
+    {
+        int conter1 = 0, conter2 = 0;
+        cout << series(arry, num, conter1, conter2) << endl;
+        break;
+    }
+    case BIGGEST_LIMITS: //11
+    {
+        int sta, end, big = -3;
+        cin >> sta; 
+        cin >> end;
+        cout << maximum(arry, num, sta, end, big) << endl;
+        break;
+    }
+    case PRINT_PRIMARY: //12
+    {
+        primary(arry, 0);
+        break;
+    }
+    case THIRTEEN:  //13
+        break;
+    }
+    start(arry, salary);
+}
+//====================function read_data=======================
+//This function populates an array
+void read_data(int arry[], int num)
+{
+    if (num < MAX) {
+        cin >> arry[num];
+        read_data(arry, num + 1);
+    }
+}
+//=====================function sum==========================
+//This function sums the cells of the array and returns the value of their sum
+int sum(int arry[], int num)
+{
+    int temp;
+    if (num == 9)
+        return arry[num];
+    else
+        temp = arry[num] + sum(arry, num + 1);
+    if (num == 0)
+        cout << temp << endl;
+
+    return temp;
+}
+//====================function arg==============================
+//This function arranges the matrix from small to large
+void arg(int arry[], int num, int conter, bool& salary)
+{
+    if(conter < MAX){
+        arrangement(arry, 0, conter);
+        conter++;
+        arg(arry, num, conter, salary);
+    }
+    salary = true;
+    
+}
+//=====================function arrangement=============================
+//This function, with the help of the function that preceded it,
+//arranges the chart from small to large
+void arrangement(int arry[], int num, int round_two)
+{
+    int temp;
+    if (arry[num] > arry[num + 1]) {
+        temp = arry[num];
+        arry[num] = arry[num + 1];
+        arry[num + 1] = temp;
+    }
+    if(num < 8- round_two )
+        arrangement(arry, num + 1, round_two);
+    
+}
+//==================function research================================
+//This function receives the array and another element and checks
+//whether the element is inside the array or not.
+int research(int arry[], int num, bool salary, int input)
+{
+    int temp = 0 ;
+    
+    if(input == arry[num])
+       return 1;
+    
+    if(num < MAX) 
+        temp = research(arry, num + 1, true, input);
+        
+    return temp;
+}
+//=====================function similar=============================
+//This function determines whether the array depends on a specific
+//order in its inputs, since the difference between cells is constant.
+int similar(int arry[], int num)
+{
+    int temp;
+    int diff = arry[1] - arry[0]; 
+    if(num == MAX - 1) 
+        return 1;
+    if(arry[num + 1] - arry[num] != diff)
+        return 0;
+    return similar(arry, num + 1);    
+}
+//===================function print===============================
+//This function obeys the content of the array.
+void print(int arry[], int num)
+{
+    if(num < MAX){
+        cout << arry[num] << " ";
+        print(arry, num + 1);
+    }
+}
+//===================function print_end===============================
+//This function obeys the content of the array in an inverse manner.
+void print_end(int arry[], int num)
+{
+    if(num >= 0){
+        cout << arry[num] << " ";
+        print_end(arry, num - 1);
+    }
+}
+//===================function fip===============================
+//This function depends on checking the matrix if it is arranged
+//in a Fibonacci manner.
+int fip(int arry[], int num)
+{
+    int same = arry[num - 1] + arry[num - 2];
+    if(num == MAX - 1 && arry[num] == same)
+        return 1;
+    if(arry[num] != same)
+        return 0;
+    return fip(arry, num + 1);    
+}
+//=================function palindrom=================================
+//Checking whether the array is a plinth, meaning it is symmetric.
+void palindrom(const int my_array[],
+    int index, int start, bool& is_palindrom)
+{
+    if (index == MAX / 2)
+        return;
+    palindrom(my_array, index + 1, start - 1, is_palindrom);
+    if (my_array[index] != my_array[start])
+    {
+        is_palindrom = false;
+    }
+}
+//===================function series===============================
+//Examine how many subsets constitute an ascending or 
+//descending series and present the result.
+int series(int arry[], int num, int& c1, int& c2)
+{   
+    if(num < MAX){
+        if(arry[num] >= arry[num + 1]){
+            if(arry[num + 1] >= arry[num + 2])
+                series(arry, num + 1, c1, c2);
+            else{
+                c1++;
+                series(arry, num + 1, c1, c2);
+            }
+        }
+        if(arry[num] <= arry[num + 1]){
+            if(arry[num + 1] <= arry[num + 2])
+                series(arry, num + 1, c1, c2);
+            else{
+                c2++;
+                series(arry, num + 1, c1, c2);
+            }
+        }
+    }
+    return (c1 + c2);
+}
+//==================function maximum================================
+/* Displays the maximum member within the subset,
+*  with the user entering the position of the first
+*  member in the subset and the position of the last member in the subset.
+*/
+int maximum(int arry[], int num, int sta, int end, int& big)
+{
+    if(sta > 10 || end > 10){
+        bag(arry, num, sta, end, big);
+        return big;
+    }
+    if(sta > end){
+        bag(arry, num, sta, end, big);
+        return big;
+    }
+        
+    if(sta < end){
+        if(arry[sta] > big)
+            big = arry[sta];
+        maximum(arry, num, sta + 1, end, big);
+    }
+    if(sta == end){
+        if(arry[sta] > big)
+            big = arry[sta];
+    }
+    
+    return big;
+}
+//====================function bag==============================
+//A function that helps to find the largest element
+void bag(int arry[], int num, int sta, int end, int& big)
+{
+    if(num < 10){
+        if(arry[num] > big)
+            big = arry[num];
+    bag(arry, num + 1, sta + 1, end, big);
+    }
+}
+//=================function primary=================================
+/*Displays the values in the array that hold that initial value.
+*The values must be displayed in the order in which they appear in the array.
+*/
+void primary(const int my_array[], int index)
+{
+    if (index <= MAX)
+    {
+        if (is_primary(my_array[index], my_array[index] - 1))
+            cout << my_array[index] << " " << endl;
+
+        primary(my_array, index + 1);
+    }
+}
+//===================function is_primary===============================
+//check if the qurent number is primary
+bool is_primary(int n_check, int check)
+{
+    if (n_check < 2)
+        return false;
+
+    if (check == 1)
+        return true;
+
+    if (n_check % check == 0)
+        return false;
+
+    return is_primary(n_check, check - 1);
+}

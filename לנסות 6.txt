@@ -1,0 +1,117 @@
+#include <iostream>
+#include <cstdlib> 
+
+using std :: cout;
+using std :: cin;
+using std :: endl;
+
+
+const int ROWS = 5,
+          COLS =17;
+const int N = 6; 
+
+enum patterns_t
+{EVEN_PT, POSITIVE_PT, DIVIDE_BY_3_MPT};
+
+void reed_data(int mtx[ROWS][COLS], int arr[]);
+void find_patterns(int mtx[ROWS][COLS], int arr[], int & num);
+void check_even(int mtx[ROWS][COLS], int arr[], int & num, int x, bool & first);
+
+int main()
+{
+    int mtx[ROWS][COLS];
+    int arr[N];
+    int sum= -1,
+        num=0;
+    
+    reed_data(mtx, arr);
+    find_patterns(mtx, arr, num, sum);
+    cout<<num <<endl;
+    return 0;
+}
+
+void reed_data(int mtx[ROWS][COLS], int arr[]){
+    
+    for(int i=0; i<ROWS; i++)
+        for(int j=0; j<COLS; j++)
+        cin>> mtx[i][j];
+        
+    for(int x=1; x<N; x++){
+    cin>>arr[x];
+    
+    if(arr[x] <= 2)
+    arr[x]= (enum patterns_t) arr[x];
+    }
+}
+
+void find_patterns(int mtx[ROWS][COLS], int arr[], int & num, int & sum){
+    bool first=true;
+    
+    for(int x=1; x<N; x++){
+        for(static int i=0; i<ROWS ; i++){
+            if(arr[x]==EVEN_PT){
+                check_even(mtx, arr, int & sum, int x, bool & first, i); 
+                if(first==true){
+                    continue;
+                }
+                num=i;
+            }
+            
+             else if(arr[x]==POSITIVE_PT)
+                check_positive(mtx, arr, int & sum, int x, bool & first, i);
+                
+             else if(arr[x]==DIVIDE_BY_3_MPT)
+        }
+    }
+    
+void check_even(int mtx[ROWS][COLS], int arr[], int & sum, int x, bool & first){
+    
+    switch(x){
+    
+    case 1:    
+        for(int j=0; j<3 && first; j++)
+           if(mtx[i][j]%2 == 0){
+                sum += mtx[i][j];
+                first=false;
+            }
+           else{ 
+            continue;
+           }
+            break;
+    case 2:
+        int b=j + 1;
+        if(mtx[i][b]%2 == 0 && mtx[i][b + 1]%2 == 0){
+            sum += mtx[i][b];
+            sum += mtx[i][b + 1];
+        }
+            break;
+    case 3:
+        int a=b + 2;
+        if(mtx[i][a]%2 == 0 && mtx[i][a + 1]%2 == 0 && mtx[i][a + 2]%2 == 0){
+            sum=mtx[i][a];
+            sum=mtx[i][a + 1];
+            sum=mtx[i][a + 2];
+        }    
+            break;
+    case 4:
+        int t=a + 3;
+        if(mtx[i][t]%2 == 0 && mtx[i][t + 1]%2 == 0 &&
+        mtx[i][t + 2]%2 == 0 && mtx[i][t + 3]%2 == 0){
+            sum=mtx[i][t];
+            sum=mtx[i][t + 1];
+            sum=mtx[i][t + 2];
+            sum=mtx[i][t + 3];
+        }    
+            break;
+    case 5:
+        int f=t + 4;
+        if(mtx[i][f]%2 == 0 && mtx[i][f + 1]%2 == 0 && mtx[i][f + 2]%2 == 0 && mtx[i][f + 3]%2 == 0 && mtx[i][f + 4]%2 == 0){
+            sum=mtx[i][f];
+            sum=mtx[i][f + 1];
+            sum=mtx[i][f + 2];
+            sum=mtx[i][f + 3];
+            sum=mtx[i][f + 4];
+        }
+            break;
+    }
+}    

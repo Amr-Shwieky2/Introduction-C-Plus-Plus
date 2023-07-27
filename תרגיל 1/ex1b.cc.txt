@@ -1,0 +1,31 @@
+// Ex2.b: Calculating the Area and the perimeter of a triangle
+
+// ------ including section ------
+#include <iostream>
+#include <cmath> 
+
+// ------ using section ------
+using std :: cout;
+using std :: cin;
+using std :: endl;
+
+// ------ main section ------
+int main()
+{
+// ---- variables that are the three inputs and are outputs
+    double side1, side2, side3, area, s;
+    
+// ---- entering the variables
+    cin >> side1 >> side2 >> side3;
+    
+    s = (side1+side2+side3)/2;
+	
+	area = sqrt(s*(s-side1)*(s-side2)*(s-side3)); 
+
+// ------ presenting the area and the perimeter	
+	cout << area << " " << s*2;
+              
+              cout << endl;
+       
+    return 0;
+}

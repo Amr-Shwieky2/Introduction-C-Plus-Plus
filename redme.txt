@@ -1,0 +1,48 @@
+File: ex1a.cc 
+Solving a Quadratic Equation
+ ========================================
+ Writen by: Amr Shwieky, id = 212443485, login = amrsh
+
+This program solves the equation for the difference between the two inputs.
+
+Compile: g++ -Wall ex1a.cc –o ex1a
+Run: ex1a
+Input: 	The three coefficients of the equation; 
+            e.g. 5 -3 0 for the equation:  
+num1-num1 , num1-num2 , num1-num3 
+num2-num1 , num2-num2 , num2-num3
+ num3-num1 , num3-num2  , num3-num3 
+
+Output: presenting three numbers in three cases.
+
+File: ex1b.cc 
+
+ ========================================
+ Writen by: Amr Shwieky, id = 212443485, login = amrsh
+
+This program Calculating the Area and the perimeter of a triangle on the base of Heron:
+s*(s-side1)*(s-side2)*(s-side3)
+
+
+Compile: g++ -Wall ex1b.cc –o ex1b
+Run: ex1b
+Input: Enter three numbers denoting three sides of the triangle
+Output: The result is the area of the triangle and the perimeter of the triangle in which the measures of three sides are entered.
+
+
+File: ex1c.cc 
+
+========================================
+ Writen by: Amr Shwieky, id = 212443485, login = amrsh
+
+This program Calculates a subject's average by dividing the percentage for each of the sections :
+A. The weight of the first exercise is 10% of the score.
+B. The weight of the second exercise is 20% of the score
+C. And the weight of the exam is 70% of the grade.
+
+Compile: g++ -Wall ex1c.cc –o ex1c
+Run: ex1c
+Input: Enter three marks to be calculated as an average.
+Output:Calculation of three inputs yields a subject rate.
+
+
